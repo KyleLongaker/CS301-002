@@ -280,3 +280,42 @@ with open(file_path, 'w', newline='') as csv_file:
     csv_writer.writerow(my_delete_dict)
     csv_writer.writerow(my_element_in_dict)
 
+# Plotting bar graphs (Histograms) using matpotlib.pyplot 
+import matplotlib.pyplot as plot
+import csv
+
+# Loading data from CSV file
+file_path = r'C:\Users\james\OneDrive\Documents\UNC\1. Spring 2024\4. Algorithms (CS 301)\3. Big O Running Time\my_runtime_data.csv'
+
+with open(file_path, newline='') as fileName:
+    data = csv.reader(fileName)
+    data = list(data)
+
+# Extracting headers and rows from the file
+headers = data[0]
+rows = data[1:] # reading data form all rows except 1st. 
+
+# Function to plot histograms (bar graphs)
+def plot_data(Graph_Title, xAxis, yAxis, headers, rowData):
+    x_labels = headers[1:] # reading the headers from first to last
+    y_data = [float(value) for value in rowData[1:]]  # Converting string data to float
+
+    plot.bar(x_labels, y_data)
+    plot.title(Graph_Title)
+    plot.xlabel(xAxis)
+    plot.ylabel(yAxis)
+    plot.xticks(rotation=45)
+    plot.tight_layout()
+    plot.show()
+
+# Ploting histograms for each data category
+plot_data("Insertion Time at Beginning (List)", "Number of Elements", "Average Time (s)", headers, rows[0])
+plot_data("Insertion Time in Middle (List)", "Number of Elements", "Average Time (s)", headers, rows[1])
+plot_data("Insertion Time at End (List)", "Number of Elements", "Average Time (s)", headers, rows[2])
+plot_data("Deletion Time at Beginning (List)", "Number of Elements", "Average Time (s)", headers, rows[3])
+plot_data("Deletion Time in Middle (List)", "Number of Elements", "Average Time (s)", headers, rows[4])
+plot_data("Deletion Time at End (List)", "Number of Elements", "Average Time (s)", headers, rows[5])
+plot_data("Search Time in List", "Number of Elements", "Average Time (s)", headers, rows[6])
+plot_data("Insertion Time in (Dictionary)", "Number of Elements", "Average Time (s)", headers, rows[7])
+plot_data("Deletion Time in (Dictionary)", "Number of Elements", "Average Time (s)", headers, rows[8])
+plot_data("Search Time in (Dictionary)", "Number of Elements", "Average Time (s)", headers, rows[9])
