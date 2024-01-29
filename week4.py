@@ -9,6 +9,17 @@ class Stack():
             self.__index.pop()
         except:
             return None
-    
 
-        
+class Deque():
+    def__init__(self):
+        self.__index = []
+    def addFront(item):
+        self.item = curNode
+    ##def addRear(item):
+    ##def removeFront():
+    ##def removeRear():
+    ##def isEmpty():
+        ##if()
+          ##  return True
+        ##else 
+            ##return False 
