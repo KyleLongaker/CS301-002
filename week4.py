@@ -25,59 +25,46 @@ class Stack():
     def size(self):
         return len(self.stack)
 
-#A queue is similar to a stack, but it enforces FIFO (First In, First Out) access.
-import time 
+#A queue is similar to a stack, but it enforces FIFO (First In, First Out) access. 
 
 class Queue:
-    def __init__(self, item ):
-        self.items = item
-
+  #running time - takes O(1) because it is essentially an index assignment
+    def __init__(self):
+        self.items = []
+ #running time - takes O(2) because it requires an index assignment and an append items to the list 
     def enqueue(self, item):
-        start_time = time.time()
+        self.item = item 
         self.items.append(item)
-        end_time = time.time()
-        total_time = end_time - start_time
-        print("******* Total Time Taken by -- ", item," --" , total_time,"s")
-
+ #running time - takes O(1) because it is only a pop or returns None
     def dequeue(self):
-        start_time = time.time()
+        
         if self.isEmpty():
          return None
-        end_time = time.time()
-        total_time = end_time - start_time
-        print("******* Total time taken by dequeue -----> " , total_time,"s",)
-        return self.items.pop(0)
         
-
+        return self.items.pop(0)
+ #running time - takes O(1) because it just uses a length function
     def isEmpty(self):
-      start_time = time.time()
       if (len(self.items) == 0):
-       end_time = time.time()
-       total_time = end_time - start_time
-       print("******** Total time taken by isEmpty -----> ", total_time,"s")
        return True
       else:
-        end_time = time.time()
-        total_time = end_time - start_time
-        print("******* Total time taken by isEmpty -----> ", total_time, "s")
         return False
 
+ #running time - takes O(1) because it just uses a length function
     def size(self):
-       
        return len(self.items)
 
 
-# testing the code 
-number = ["Green"]
-testing  = Queue(number)
+# Testing the code 
+testing = Queue()
 print("Checkig queue is empty or  not?", testing.isEmpty())
 testing.enqueue("Aman")
 testing.enqueue("Beer")
 testing.enqueue("C")
 print("Queue size:", testing.size())
 print("Dequeue:", testing.dequeue()) 
-print("Queue size after dequeue:", testing.size())
+print("Queue size after dequeue:",testing.size())
 print("Is the queue empty?", testing.isEmpty()) 
+
 
 
 class Deque():
