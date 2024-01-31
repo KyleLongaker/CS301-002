@@ -15,13 +15,13 @@ class Stack():
     #running time - takes O(1) because it just returns a value from a given index
     def peek(self):
         return self.stack[len(self.stack) - 1]
-    #??????????????????
+    #running time - takes O(1) because it just uses a length function
     def isEmpty(self):
         if len(self.stack) == 0:
             return True
         else:
             return False
-    #??????????????????
+    #running time - takes O(1) because it just uses a length function
     def size(self):
         return len(self.stack)
 
