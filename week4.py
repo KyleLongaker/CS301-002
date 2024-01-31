@@ -71,12 +71,21 @@ class Deque():
     def__init__(self):
         self.__index = []
     def addFront(item):
-        self.item = curNode
-    ##def addRear(item):
-    ##def removeFront():
-    ##def removeRear():
-    ##def isEmpty():
-        ##if()
-          ##  return True
-        ##else 
-            ##return False 
+        self.item = FirstNode
+        self.index(0, FirstNode)
+    def addRear(item):
+        self.item = LastNode
+        LastNode = len(self.index)
+    def removeFront():
+        self.index.remove(index[0])
+    def removeRear():
+        self.index = LastNode
+        LastNode = len(self.index)
+        self.index.remove(index[LastNode])
+    def isEmpty():
+        if(self.index == "")
+            print("Your list is empty")
+            return False
+        else
+            print("Your list is not empty")
+            return True
