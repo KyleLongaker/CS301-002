@@ -25,6 +25,61 @@ class Stack():
     def size(self):
         return len(self.stack)
 
+#A queue is similar to a stack, but it enforces FIFO (First In, First Out) access.
+import time 
+
+class Queue:
+    def __init__(self, item ):
+        self.items = item
+
+    def enqueue(self, item):
+        start_time = time.time()
+        self.items.append(item)
+        end_time = time.time()
+        total_time = end_time - start_time
+        print("******* Total Time Taken by -- ", item," --" , total_time,"s")
+
+    def dequeue(self):
+        start_time = time.time()
+        if self.isEmpty():
+         return None
+        end_time = time.time()
+        total_time = end_time - start_time
+        print("******* Total time taken by dequeue -----> " , total_time,"s",)
+        return self.items.pop(0)
+        
+
+    def isEmpty(self):
+      start_time = time.time()
+      if (len(self.items) == 0):
+       end_time = time.time()
+       total_time = end_time - start_time
+       print("******** Total time taken by isEmpty -----> ", total_time,"s")
+       return True
+      else:
+        end_time = time.time()
+        total_time = end_time - start_time
+        print("******* Total time taken by isEmpty -----> ", total_time, "s")
+        return False
+
+    def size(self):
+       
+       return len(self.items)
+
+
+# testing the code 
+number = ["Green"]
+testing  = Queue(number)
+print("Checkig queue is empty or  not?", testing.isEmpty())
+testing.enqueue("Aman")
+testing.enqueue("Beer")
+testing.enqueue("C")
+print("Queue size:", testing.size())
+print("Dequeue:", testing.dequeue()) 
+print("Queue size after dequeue:", testing.size())
+print("Is the queue empty?", testing.isEmpty()) 
+
+
 class Deque():
     def__init__(self):
         self.__index = []
