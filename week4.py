@@ -68,12 +68,12 @@ print("Is the queue empty?", testing.isEmpty())
 
 
 class Deque():
-    def__init__(self):
-        self.__index = []
-    def addFront(item):
+    def __init__(self):
+        self.index = []
+    def addFront(self.item):
         self.item = FirstNode
         self.index(0, FirstNode)
-    def addRear(item):
+    def addRear(self.item):
         self.item = LastNode
         LastNode = len(self.index)
     def removeFront():
