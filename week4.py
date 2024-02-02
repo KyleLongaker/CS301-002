@@ -70,22 +70,15 @@ print("Is the queue empty?", testing.isEmpty())
 class Deque():
     def __init__(self):
         self.index = []
-    def addFront(self.item):
-        self.item = FirstNode
-        self.index(0, FirstNode)
-    def addRear(self.item):
-        self.item = LastNode
-        LastNode = len(self.index)
-    def removeFront():
-        self.index.remove(index[0])
-    def removeRear():
-        self.index = LastNode
-        LastNode = len(self.index)
-        self.index.remove(index[LastNode])
-    def isEmpty():
-        if(self.index == "")
-            print("Your list is empty")
-            return False
-        else
-            print("Your list is not empty")
-            return True
+    def addFront(self, item):
+        self.index.insert(0, item)
+    def addRear(self, item):
+        self.item.append(item)
+    def removeFront(self):
+        if self.index:
+            return self.index.pop(0)
+    def removeRear(self):
+        if self.index:
+            return self.index.pop()
+    def isEmpty(self):
+        return len(self.index) == 0
