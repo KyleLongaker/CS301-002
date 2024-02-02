@@ -67,7 +67,6 @@ print("Is the queue empty?", testing.isEmpty())
 # Deque or a “double-ended queue” combines the features of the Stack and Queue
 ###############################################
 class Deque():
- ## The Big O run time for the __init__ is O(n)  ##
     def __init__(self):
         self.index = []
  ## The Big O run time for the addFront is O(n) ##
