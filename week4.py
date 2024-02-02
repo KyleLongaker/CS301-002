@@ -64,25 +64,30 @@ print("Queue size:", testing.size())
 print("Dequeue:", testing.dequeue()) 
 print("Queue size after dequeue:",testing.size())
 print("Is the queue empty?", testing.isEmpty()) 
-
-
-
+# Deque or a “double-ended queue” combines the features of the Stack and Queue
+###############################################
 class Deque():
+ ## The Big O run time for the __init__ is O(n)  ##
     def __init__(self):
         self.index = []
+ ## The Big O run time for the addFront is O(n) ##
     def addFront(self, item):
         self.index.insert(0, item)
+ ## The Big O run time for the addRear is O(n) ##
     def addRear(self, item):
         self.item.append(item)
+ ## The Big O run time for the removeFront is O(n)  ##
     def removeFront(self):
         if self.index:
             return self.index.pop(0)
+ ## The Big O run time for the removeRear is O(n)  ##
     def removeRear(self):
         if self.index:
             return self.index.pop()
+## The Big O run time for the isEmpty is O(n) ##
     def isEmpty(self):
         return len(self.index) == 0
-
+#####################################################
 # Linked List Code
 class Node():
     def __init__(self, item):
