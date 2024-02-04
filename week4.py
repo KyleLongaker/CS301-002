@@ -25,8 +25,9 @@ class Stack():
     def size(self):
         return len(self.stack)
 
+*********************************************************************************************************************
+    
 #A queue is similar to a stack, but it enforces FIFO (First In, First Out) access. 
-
 class Queue:
   #running time - takes O(1) because it is essentially an index assignment
     def __init__(self):
@@ -276,3 +277,213 @@ print(linked_list.size())
 print(linked_list.index(11))
 print(linked_list.pop(1))
 print(linked_list.pop(3))
+
+******************************************************************************************************
+# Code for the double_linked list 
+# I commented out the changes that are different from the linked_list code 
+
+class Node():
+
+    def __init__(self, item):
+        self.item = item
+        self.prev = None  # It has a pointer to the previous one
+        self.next = None
+
+    def __repr__(self):
+        return self.data
+
+class DoublyLinked_List():
+
+    def __init__(self):
+        self.head = None
+        self.tail = None  # Adding the tail here 
+
+    def add(self, item):
+        new_node = Node(item)
+        if self.head is None:  # To check if the list is empty 
+            self.head = new_node # if its empty then set head and tail to newly created node 
+            self.tail = new_node
+        else:
+            new_node.next = self.head # using same logic as in linked list
+            self.head.prev = new_node
+            self.head = new_node
+    def remove(self, item):
+     current_node = self.head
+     prev_node = None
+
+    def remove(self, item):
+        current_node = self.head
+
+        while current_node is not None: # running until the end of the linked list 
+            if current_node.item == item:
+                if current_node.prev:
+                    current_node.prev.next = current_node.next
+                else:
+                    self.head = current_node.next
+
+                if current_node.next: # updating previous refrences 
+                    current_node.next.prev = current_node.prev
+                else:
+                    self.tail = current_node.prev
+
+                return
+
+            current_node = current_node.next
+
+        raise KeyError(f"Item {item} not found in the list.")
+
+# After this every thing is same as in the linked_list code 
+    def search(self, item):
+        current_node = self.head
+
+        while current_node is not None:
+            if current_node.item == item:
+                return True
+            current_node = current_node.next
+
+        return False
+
+    def isEmpty(self):
+        if self.head is None:
+            return True
+        else:
+            return False
+
+    def size(self):
+        count = 0
+        current_node = self.head
+
+        while current_node is not None:
+            count += 1
+            current_node = current_node.next
+
+        return count
+
+    def append(self, item):
+        new_node = Node(item)
+
+        if self.head is None:
+            self.head = new_node
+            return
+
+        current_node = self.head
+        while current_node.next is not None:
+            current_node = current_node.next
+
+        current_node.next = new_node
+
+    def index(self, item):
+        current_node = self.head
+        position = 0
+
+        while current_node is not None:
+            if current_node.item == item:
+                return position
+            current_node = current_node.next
+            position += 1
+
+        if current_node is None:
+            raise KeyError(f"Item {item} not found in the list.")
+
+    def insert(self, position, item):
+        if position < 0:
+            raise ValueError("Position needs be a positive number.")
+
+        new_node = Node(item)
+
+        if position == 0:
+            new_node.next = self.head
+            self.head = new_node
+            return
+
+        current_node = self.head
+        current_position = 0
+
+        while current_node is not None and current_position < position - 1:
+            current_node = current_node.next
+            current_position += 1
+
+        if current_node == None:
+            raise ValueError("List is too short for the specified position.")
+
+        new_node.next = current_node.next
+        current_node.next = new_node
+
+    def pop(self):
+        if self.head is None:
+            raise ValueError("List is empty. Cannot pop from an empty list.")
+
+        if self.head.next is None:
+            popped_item = self.head.item
+            self.head = None
+            return popped_item
+
+        current_node = self.head
+
+        while current_node.next.next == None:
+            current_node = current_node.next
+
+        popped_item = current_node.next.item
+        current_node.next = None
+        return popped_item
+
+    def pop(self, pos):
+        if self.head is None:
+            raise ValueError("List is empty. Cannot pop from an empty list.")
+
+        if pos < 0:
+            raise ValueError("Position should be a positive number.")
+
+        if pos == 0:
+            popped_item = self.head.item
+            self.head = self.head.next
+            return popped_item
+
+        current_node = self.head
+        current_position = 0
+
+        while current_node.next is not None and current_position < pos - 1:
+            current_node = current_node.next
+            current_position += 1
+
+        if current_node.next is None:
+            raise ValueError("Position is beyond the end of the list.")
+
+        popped_item = current_node.next.item
+        current_node.next = current_node.next.next
+        return popped_item
+
+    def display_list(self):
+        current_node = self.head
+        while current_node:
+            print(current_node.item, end=" <-> ")
+            current_node = current_node.next
+        print("None")
+
+# Testing the code for the doubly_linked list 
+
+doubly_linked_list = DoublyLinked_List()
+doubly_linked_list.add(7)
+doubly_linked_list.add(5)
+doubly_linked_list.add(9)
+doubly_linked_list.add(3)
+doubly_linked_list.add(11)
+doubly_linked_list.add(1)
+doubly_linked_list.add(13)
+
+doubly_linked_list.remove(3)
+
+doubly_linked_list.append(27)
+
+doubly_linked_list.insert(5, 37)
+
+print("Linked List:")
+print(doubly_linked_list.display_list())
+print(doubly_linked_list.search(11))
+print(doubly_linked_list.isEmpty())
+print(doubly_linked_list.size())
+print(doubly_linked_list.index(11))
+print(doubly_linked_list.pop(1))
+print(doubly_linked_list.pop(3))
+
+# It Works :)
