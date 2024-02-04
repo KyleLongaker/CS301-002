@@ -1,56 +1,56 @@
 class Stack():
-    #running time - takes O(1) because it is essentially an index assignment
+## Running Time - takes O(1) because it is essentially an index assignment ##
     def __init__(self):
         self.stack = [ ]
-    #running time - takes O(2) because it requires an index assignment and an append
+## Running Time - takes O(2) because it requires an index assignment and an append ##
     def push(self, item):
         self.item = item
         self.stack.append(self.item)
-    #running time - takes O(1) because it is only a pop or returns None
+## Running Time - takes O(1) because it is only a pop or returns None ##
     def pop(self):
         try:
             return self.stack.pop()
         except:
             return None
-    #running time - takes O(1) because it just returns a value from a given index
+## Running Time - takes O(1) because it just returns a value from a given index ##
     def peek(self):
         return self.stack[len(self.stack) - 1]
-    #running time - takes O(1) because it just uses a length function
+## Running Time - takes O(1) because len() is a single operation ##
     def isEmpty(self):
         if len(self.stack) == 0:
             return True
         else:
             return False
-    #running time - takes O(1) because it just uses a length function
+## Running Time - takes O(1) because len() is a single operation ##
     def size(self):
         return len(self.stack)
 
 *********************************************************************************************************************
     
-#A queue is similar to a stack, but it enforces FIFO (First In, First Out) access. 
+## A queue is similar to a stack, but it enforces FIFO (First In, First Out) access. ##
 class Queue:
-  #running time - takes O(1) because it is essentially an index assignment
+  ## Running Time - takes O(1) because it is essentially an index assignment ##
     def __init__(self):
         self.items = []
- #running time - takes O(2) because it requires an index assignment and an append items to the list 
+ ## Running Time - takes O(2) because it requires an index assignment and an append items to the list ##
     def enqueue(self, item):
         self.item = item 
         self.items.append(item)
- #running time - takes O(1) because it is only a pop or returns None
+ ## Running Time - takes O(1) because it is only a pop or returns None ##
     def dequeue(self):
         
         if self.isEmpty():
          return None
         
         return self.items.pop(0)
- #running time - takes O(1) because it just uses a length function
+ ## Running Time - takes O(1) because it just uses a length function ##
     def isEmpty(self):
       if (len(self.items) == 0):
        return True
       else:
         return False
 
- #running time - takes O(1) because it just uses a length function
+ ## Running Time - takes O(1) because it just uses a length function ##
     def size(self):
        return len(self.items)
 
@@ -68,41 +68,44 @@ print("Is the queue empty?", testing.isEmpty())
 # Deque or a “double-ended queue” combines the features of the Stack and Queue
 ###############################################
 class Deque():
+## Running Time - takes O(1) because it is a single assignment ##
     def __init__(self):
         self.index = []
  ## The Big O run time for the addFront is O(n) ##
     def addFront(self, item):
         self.index.insert(0, item)
- ## The Big O run time for the addRear is O(n) ##
+ ## The Big O run time for the addRear is O(1) ##
     def addRear(self, item):
         self.item.append(item)
  ## The Big O run time for the removeFront is O(n)  ##
     def removeFront(self):
         if self.index:
             return self.index.pop(0)
- ## The Big O run time for the removeRear is O(n)  ##
+ ## The Big O run time for the removeRear is O(1)  ##
     def removeRear(self):
         if self.index:
             return self.index.pop()
-## The Big O run time for the isEmpty is O(n) ##
+## The Big O run time for the isEmpty is O(1) ##
     def isEmpty(self):
         return len(self.index) == 0
 #####################################################
 # Linked List Code
 class Node():
+## Running Time - takes O(2) for the two assignments ##
     def __init__(self, item):
         self.item = item
         self.next = None
 
 class Linked_List():
+## Running Time - takes O(1) for the single assignment ##
     def __init__(self):
         self.head = None
-
+## Running Time - takes O(5) for the node assignment, two assignments in Node(), and the two assignments after ##
     def add(self, item):
         new_node = Node(item)
         new_node.next = self.head
         self.head = new_node
-
+## Running Time - takes at minimum O(5) and at maximum O(3n + 6) = O(3n) ##
     def remove(self, item):
         current_node = self.head
         prev_node = None
@@ -124,7 +127,7 @@ class Linked_List():
             self.head = current_node.next
         else:
             prev_node.next = current_node.next
-
+## Running Time - takes at minimum O(3) and at maximum O(2n + 3) = O(2n) ##
     def search(self, item):
         current_node = self.head
         
@@ -134,13 +137,13 @@ class Linked_List():
             current_node = current_node.next
 
         return False
-    
+## Running Time - takes O(2) ##
     def isEmpty(self):
         if self.head is None:
             return True
         else:
             return False
-        
+## Running Time - takes at minimum O(4) and at maximum O(2n + 4) = O(2n) ##
     def size(self):
         count = 0
         current_node = self.head
