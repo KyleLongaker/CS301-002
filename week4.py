@@ -477,7 +477,7 @@ doubly_linked_list.append(27)
 
 doubly_linked_list.insert(5, 37)
 
-print("Linked List:")
+print("Doubly_Linked List:")
 print(doubly_linked_list.display_list())
 print(doubly_linked_list.search(11))
 print(doubly_linked_list.isEmpty())
