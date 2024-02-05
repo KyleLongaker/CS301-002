@@ -153,7 +153,7 @@ class Linked_List():
             current_node = current_node.next
 
         return count
-    
+## Running Time - takes at minimum O(3) and at maximum O(n + 5) = O(n) ##
     def append(self, item):
         new_node = Node(item)
 
@@ -166,7 +166,7 @@ class Linked_List():
             current_node = current_node.next
 
         current_node.next = new_node
-
+## Running Time - takes at minimum O(5) and at maximum O(3n + 5) = O(3n) ##
     def index(self, item):
         current_node = self.head
         position = 0
@@ -179,7 +179,7 @@ class Linked_List():
 
         if current_node is None:
             raise KeyError(f"Item {item} not found in the list.")
-        
+## Running Time - takes at minimum O(2) and at maximum O(2n + 9) = O(2n) ##
     def insert(self, position, item):
         if position < 0:
             raise ValueError("Position needs be a positive number.")
@@ -203,7 +203,7 @@ class Linked_List():
     
         new_node.next = current_node.next
         current_node.next = new_node
-
+## Running Time - takes at minimum O(2) and at maximum O(n + 6) = O(n) ##
     def pop(self):
         if self.head is None:
             raise ValueError("List is empty. Cannot pop from an empty list.")
@@ -221,7 +221,7 @@ class Linked_List():
         popped_item = current_node.next.item
         current_node.next = None
         return popped_item
-
+## Running Time - takes at minimum O(2) and at maximum O(2n + 10) = O(2n) ##
     def pop(self, pos):
         if self.head is None:
             raise ValueError("List is empty. Cannot pop from an empty list.")
@@ -247,13 +247,6 @@ class Linked_List():
         popped_item = current_node.next.item
         current_node.next = current_node.next.next
         return popped_item
-
-    def display_list(self):
-        current_node = self.head
-        while current_node:
-            print(current_node.item, end=" -> ")
-            current_node = current_node.next
-        print("None")
         
 # Testing every function of the Linked List Class
 linked_list = Linked_List() 
@@ -273,7 +266,6 @@ linked_list.append(27)
 linked_list.insert(5, 37)
 
 print("Linked List:")
-print(linked_list.display_list())
 print(linked_list.search(11))
 print(linked_list.isEmpty())
 print(linked_list.size())
@@ -286,21 +278,21 @@ print(linked_list.pop(3))
 # I commented out the changes that are different from the linked_list code 
 
 class Node():
-
+## Running Time - takes O(3) ##
     def __init__(self, item):
         self.item = item
         self.prev = None  # It has a pointer to the previous one
         self.next = None
-
+## Running Time - takes O(1) ##
     def __repr__(self):
         return self.data
 
 class DoublyLinked_List():
-
+## Running Time - takes O(2) ##
     def __init__(self):
         self.head = None
         self.tail = None  # Adding the tail here 
-
+## Running Time - takes at minimum O(4) and at maximum O(3n + 6) = O(3n) ##
     def add(self, item):
         new_node = Node(item)
         if self.head is None:  # To check if the list is empty 
@@ -310,6 +302,7 @@ class DoublyLinked_List():
             new_node.next = self.head # using same logic as in linked list
             self.head.prev = new_node
             self.head = new_node
+            
     def remove(self, item):
      current_node = self.head
      prev_node = None
