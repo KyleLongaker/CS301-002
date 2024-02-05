@@ -1,5 +1,6 @@
 class Stack():
 ## Running Time - takes O(1) because it is essentially an index assignment ##
+## 7. Using a linked_list or double_linked_list would be much longer as each append() command would take O(n) rather than the O(1) of the Python list. ##
     def __init__(self):
         self.stack = [ ]
 ## Running Time - takes O(2) because it requires an index assignment and an append ##
@@ -28,6 +29,7 @@ class Stack():
 *********************************************************************************************************************
     
 ## A queue is similar to a stack, but it enforces FIFO (First In, First Out) access. ##
+## Using a linked_list would increase average runtime as the append() function requires iterating through each element. ##
 class Queue:
   ## Running Time - takes O(1) because it is essentially an index assignment ##
     def __init__(self):
@@ -67,6 +69,9 @@ print("Queue size after dequeue:",testing.size())
 print("Is the queue empty?", testing.isEmpty()) 
 # Deque or a “double-ended queue” combines the features of the Stack and Queue
 ###############################################
+
+## Using a linked_list would increase average runtime as the append() function again requires iterating through each element, however, a doubly_linked_list would work well with the
+## data structure, enabling easy addFront and addRear commands. Unlike with the list, inserting at the front would not take as much time since each index does not need to be adjusted. ##
 class Deque():
 ## Running Time - takes O(1) because it is a single assignment ##
     def __init__(self):
@@ -480,3 +485,11 @@ print(doubly_linked_list.pop(1))
 print(doubly_linked_list.pop(3))
 
 # It Works :)
+
+"""
+6. Python's default list storage is something else because each element can be accessed almost immediately, functioning as a sort of array.
+In both a linked list and a double-linked list, there is no way to access an element in the middle without starting from the head or tail,
+but arrays allow any element to be accessed at any time using its index. A linked list is much like Python's default list inside a while loop
+in which it must iterate through every element until finding the one it is looking for.
+"""
+
