@@ -303,10 +303,7 @@ class DoublyLinked_List():
             self.head.prev = new_node
             self.head = new_node
             
-    def remove(self, item):
-     current_node = self.head
-     prev_node = None
-
+## Running Time - takes at minimum O(5) and at maximum O(n + 6) = O(n) ##
     def remove(self, item):
         current_node = self.head
 
