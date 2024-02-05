@@ -1,3 +1,7 @@
+## Assignment : Week 4: Ordered Collection Data Structures 
+## Authors : James, Seerat, Kyle, Simon, Katelyn. 
+
+
 class Stack():
 ## Running Time - takes O(1) because it is essentially an index assignment ##
 ## 7. Using a linked_list or double_linked_list would be much longer as each append() command would take O(n) rather than the O(1) of the Python list. ##
@@ -278,10 +282,8 @@ print(linked_list.index(11))
 print(linked_list.pop(1))
 print(linked_list.pop(3))
 
-******************************************************************************************************
-# Code for the double_linked list 
-# I commented out the changes that are different from the linked_list code 
-
+*************************************************************************************************
+# Double linked list code 
 class Node():
 ## Running Time - takes O(3) ##
     def __init__(self, item):
@@ -296,30 +298,30 @@ class DoublyLinked_List():
 ## Running Time - takes O(2) ##
     def __init__(self):
         self.head = None
-        self.tail = None  # Adding the tail here 
+        self.tail = None  # Adding the tail here
 ## Running Time - takes at minimum O(4) and at maximum O(3n + 6) = O(3n) ##
     def add(self, item):
         new_node = Node(item)
-        if self.head is None:  # To check if the list is empty 
-            self.head = new_node # if its empty then set head and tail to newly created node 
+        if self.head is None:  # To check if the list is empty
+            self.head = new_node # if its empty then set head and tail to newly created node
             self.tail = new_node
         else:
             new_node.next = self.head # using same logic as in linked list
             self.head.prev = new_node
             self.head = new_node
-            
+
 ## Running Time - takes at minimum O(5) and at maximum O(n + 6) = O(n) ##
     def remove(self, item):
         current_node = self.head
 
-        while current_node is not None: # running until the end of the linked list 
+        while current_node is not None: # running until the end of the linked list
             if current_node.item == item:
                 if current_node.prev:
                     current_node.prev.next = current_node.next
                 else:
                     self.head = current_node.next
 
-                if current_node.next: # updating previous refrences 
+                if current_node.next: # updating previous refrences
                     current_node.next.prev = current_node.prev
                 else:
                     self.tail = current_node.prev
@@ -330,7 +332,7 @@ class DoublyLinked_List():
 
         raise KeyError(f"Item {item} not found in the list.")
 
-# After this every thing is same as in the linked_list code 
+# After this every thing is same as in the linked_list code until the insert and pop methods 
     def search(self, item):
         current_node = self.head
 
@@ -382,83 +384,102 @@ class DoublyLinked_List():
 
         if current_node is None:
             raise KeyError(f"Item {item} not found in the list.")
-
+ ## Running Time - takes at minimum O(1) and at maximum O(n+7) = O(n) ##
     def insert(self, position, item):
-        if position < 0:
-            raise ValueError("Position needs be a positive number.")
+     if position < 0:
+        raise ValueError("Position needs to be a non-negative number.")
 
-        new_node = Node(item)
+     new_node = Node(item)
 
-        if position == 0:
-            new_node.next = self.head
+     if position == 0:
+        if self.head is None:
             self.head = new_node
-            return
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+        return
 
-        current_node = self.head
-        current_position = 0
+     current_node = self.head
+     current_position = 0
 
-        while current_node is not None and current_position < position - 1:
-            current_node = current_node.next
-            current_position += 1
+     while current_node is not None and current_position < position - 1:
+        current_node = current_node.next
+        current_position += 1
 
-        if current_node == None:
-            raise ValueError("List is too short for the specified position.")
+     if current_node is None:
+        raise ValueError("List is too short for the specified position.")
 
-        new_node.next = current_node.next
-        current_node.next = new_node
+     new_node.next = current_node.next
+     if current_node.next is not None:
+        current_node.next.prev = new_node
+     current_node.next = new_node
+     new_node.prev = current_node
 
+     if new_node.next is None:
+        self.tail = new_node
+
+
+## Running Time - takes at minimum O(1) and at maximum O(n+3) = O(n) 
     def pop(self):
-        if self.head is None:
-            raise ValueError("List is empty. Cannot pop from an empty list.")
+     if self.head is None:
+        raise ValueError("List is empty. Cannot pop from an empty list.")
 
-        if self.head.next is None:
-            popped_item = self.head.item
-            self.head = None
-            return popped_item
-
-        current_node = self.head
-
-        while current_node.next.next == None:
-            current_node = current_node.next
-
-        popped_item = current_node.next.item
-        current_node.next = None
+     if self.head.next is None:
+        popped_item = self.head.item
+        self.head = None
+        self.tail = None
         return popped_item
 
+     current_node = self.head
+     while current_node.next.next is not None:
+        current_node = current_node.next
+
+     popped_item = current_node.next.item
+     current_node.next = None
+     self.tail = current_node
+     return popped_item
+
+## Running Time - takes at minimum O(1) and at maximum O(n+7) = O(n)
     def pop(self, pos):
+     if self.head is None:
+        raise ValueError("List is empty. Cannot pop from an empty list.")
+
+     if pos < 0:
+        raise ValueError("Position should be a non-negative number.")
+
+     if pos == 0:
+        popped_item = self.head.item
+        if self.head.next is not None:
+            self.head.next.prev = None
+        self.head = self.head.next
         if self.head is None:
-            raise ValueError("List is empty. Cannot pop from an empty list.")
-
-        if pos < 0:
-            raise ValueError("Position should be a positive number.")
-
-        if pos == 0:
-            popped_item = self.head.item
-            self.head = self.head.next
-            return popped_item
-
-        current_node = self.head
-        current_position = 0
-
-        while current_node.next is not None and current_position < pos - 1:
-            current_node = current_node.next
-            current_position += 1
-
-        if current_node.next is None:
-            raise ValueError("Position is beyond the end of the list.")
-
-        popped_item = current_node.next.item
-        current_node.next = current_node.next.next
+            self.tail = None
         return popped_item
 
-    def display_list(self):
-        current_node = self.head
-        while current_node:
-            print(current_node.item, end=" <-> ")
-            current_node = current_node.next
-        print("None")
+     current_node = self.head
+     current_position = 0
 
-# Testing the code for the doubly_linked list 
+     while current_node.next is not None and current_position < pos:
+        current_node = current_node.next
+        current_position += 1
+
+     if current_node is None:
+        raise ValueError("Position is beyond the end of the list.")
+
+     popped_item = current_node.item
+     if current_node.prev is not None:
+        current_node.prev.next = current_node.next
+     if current_node.next is not None:
+        current_node.next.prev = current_node.prev
+     if current_node == self.tail:
+        self.tail = current_node.prev
+     return popped_item
+
+
+    
+# Testing the code for the doubly_linked list
 
 doubly_linked_list = DoublyLinked_List()
 doubly_linked_list.add(7)
@@ -476,7 +497,7 @@ doubly_linked_list.append(27)
 doubly_linked_list.insert(5, 37)
 
 print("Doubly_Linked List:")
-print(doubly_linked_list.display_list())
+#print(doubly_linked_list.display_list())
 print(doubly_linked_list.search(11))
 print(doubly_linked_list.isEmpty())
 print(doubly_linked_list.size())
@@ -484,6 +505,7 @@ print(doubly_linked_list.index(11))
 print(doubly_linked_list.pop(1))
 print(doubly_linked_list.pop(3))
 
+   
 # It Works :)
 
 """
