@@ -52,3 +52,23 @@ maze = create_maze(dim)
 path = find_path_bfs(maze)
 print_maze(maze, path)
 
+# 3 String Operations 
+def StringOperator(string, operations):
+    letters = list(string)  # Converting string into a list of characters
+    output = []
+
+    for operation in operations:
+        if operation == 'R':
+            letters = letters[::-1]  # Reversing the string
+        elif operation == 'P':
+            if letters:  # Checking if the letters list is not empty
+               output.append(letters.pop(0))
+
+    output.extend(letters)     # Appending the remaining letters from the input string to the output list
+    return ''.join(output)    # Using the .join method to join the elements of the output list into a string.
+
+# Testing the code
+print(StringOperator("1soloCIPC", "RPPRPRPRPRPPRPP"))
+print(StringOperator("dWW397uyFw6qiKVEXpGwD57FVtwp2Ltg2plqcVUh6zZZKQ3cvtihvYvGnf58yVVbJVPD3VuLqi9Fj1EuLFzvTRnLmzdtI7As5HSQ", "PRPPPRRRPPPRPPRRPRRPRRPRPPRPPRPPRPRPPRPRPPRPPPRRRPPRPRRRPRRRRRPRPRPPPPRPRPRRPPRPPRRRRPRPPRRRPRPRRPPPRPRRPRPRPPRRRRPPPPPPPRPRPPPPRPPRPPRRPPPRRPPRRRPPPRPRPPPRPRRPRRRPPPPPRRRRRRRPRPRRRPPRPRRPPPRRRRP"))
+
+
