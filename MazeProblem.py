@@ -70,5 +70,6 @@ def StringOperator(string, operations):
 # Testing the code
 print(StringOperator("1soloCIPC", "RPPRPRPRPRPPRPP"))
 print(StringOperator("dWW397uyFw6qiKVEXpGwD57FVtwp2Ltg2plqcVUh6zZZKQ3cvtihvYvGnf58yVVbJVPD3VuLqi9Fj1EuLFzvTRnLmzdtI7As5HSQ", "PRPPPRRRPPPRPPRRPRRPRRPRPPRPPRPPRPRPPRPRPPRPPPRRRPPRPRRRPRRRRRPRPRPPPPRPRPRRPPRPPRRRRPRPPRRRPRPRRPPPRPRRPRPRPPRRRRPPPPPPPRPRPPPPRPPRPPRRPPPRRPPRRRPPPRPRPPPRPRRPRRRPPPPPRRRRRRRPRPRRRPPRPRRPPPRRRRP"))
+# The Runtime of my solution is O(s * i), where s is the length of the operations string and i is the length of the input string.
 
 
