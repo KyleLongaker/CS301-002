@@ -17,10 +17,9 @@ class HashTable():
     def hash_function(self, key):
         return key%self.size
         
-    def contains(self,item):
+    def contains(self,item,key):
         if item == key:
              return True 
-             return (old_hash + 1) % size
         else:
              return False
             
