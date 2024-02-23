@@ -1,4 +1,4 @@
-#Katelyn 
+#Katelyn  
 class HashTable():
     def __init__(self):
           self.stack = []
