@@ -7,7 +7,7 @@ class HashTable():
           self.data = [None] * self.size
 
     def put(self, key, data):
-            hash_value = self.hash_function(key, len(self.slots))
+        hash_value = self.hash_function(key, len(self.slots))
         if self.slots[hash_value] is None:
             self.slots[hash_value] = key
             self.data[hash_value] = data
@@ -28,8 +28,8 @@ class HashTable():
         
       
 #Katelyn 
-In order to convert our hashlist into a dictionary we can create two lists, one for keys and one for values.
-We can then zip those lists together in order to get key value pairs and then convert those lists into a dictionary. 
+#In order to convert our hashlist into a dictionary we can create two lists, one for keys and one for values.
+#We can then zip those lists together in order to get key value pairs and then convert those lists into a dictionary. 
 
 
 
