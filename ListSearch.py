@@ -1,11 +1,27 @@
 # Group members: Katelyn Juhl, Kyle Longaker
 
 # Kyle         
-def search_sorted_list(sorted_list,item):
-   sorted_list = []
-    if self.item = sorted_list[item]
+def search_sorted_list(sorted_list, item, start=0, end=None):
+    # Initialize `end` during the first call
+    if end is None:
+        end = len(sorted_list) - 1
+
+    # Base case
+    if start > end:
+        return False
+
+    # Find the middle index
+    mid = (start + end) // 2
+
+    # If the item is at the mid, return True
+    if sorted_list[mid] == item:
         return True
-    #elif
+    # If the item is smaller than mid, recursively search the left half
+    elif sorted_list[mid] > item:
+        return search_sorted_list(sorted_list, item, start, mid - 1)
+    # If the item is larger than mid, recursively search the right half
+    else:
+        return search_sorted_list(sorted_list, item, mid + 1, end)
 
 # Katelyn  
 class HashTable():
