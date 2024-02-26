@@ -29,6 +29,7 @@ def search_sorted_list(sorted_list, item, start=0, end=None):
     # If the item is larger than mid, recursively search the right half
     else:
         return search_sorted_list(sorted_list, item, mid + 1, end)
+    # Big O runtime: O(log n) due to the binary search algorithm's halving approach.
 
 # Katelyn
 class HashTable:
@@ -36,6 +37,7 @@ class HashTable:
         self.size = size
         self.slots = [None] * self.size  # This will store the keys
         self.data = [None] * self.size  # This will store the values
+        # Big O runtime for init: O(n) where n is the size, due to initializing the hash table.
 
     def put(self, key, data):
         start_time = time.time()  # Start timing
@@ -62,12 +64,15 @@ class HashTable:
                 self.data[next_slot] = data
         end_time = time.time()  # End timing
         print(f"HashTable put execution time: {end_time - start_time} seconds")
+        # Big O runtime: Average case O(1), worst case O(n) due to linear probing in case of collisions.
 
     def hash_function(self, key):
         return key % self.size
+        # Big O runtime: O(1) for calculating hash value.
 
     def rehash(self, old_hash):
         return (old_hash + 1) % self.size
+        # Big O runtime: O(1) for calculating new hash value.
 
     def contains(self, key):
         start_time = time.time()  # Start timing
@@ -86,6 +91,7 @@ class HashTable:
         end_time = time.time()  # End timing
         print(f"HashTable contains execution time: {end_time - start_time} seconds")
         return False
+        # Big O runtime: Average case O(1), worst case O(n) due to linear probing and needing to traverse the table.
 
     def get(self, key):
         # This method remains unchanged
