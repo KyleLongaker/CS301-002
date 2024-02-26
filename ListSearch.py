@@ -1,4 +1,13 @@
-#Katelyn  
+# Group members: Katelyn Juhl, Kyle Longaker
+
+# Kyle         
+def search_sorted_list(sorted_list,item):
+   sorted_list = []
+    if self.item = sorted_list[item]
+        return True
+    #elif
+
+# Katelyn  
 class HashTable():
     def __init__(self):
           self.stack = []
@@ -25,14 +34,7 @@ class HashTable():
             
     def items(self,key):
         return self.get(key)
-        
-#Kyle         
-def search_sorted_list(sorted_list,item):
-   sorted_list = []
-    if self.item = sorted_list[item]
-        return True
-    #elif
     
-#Katelyn 
-#In order to convert our hashlist into a dictionary we can create two lists, one for keys and one for values.
-#We can then zip those lists together in order to get key value pairs and then convert those lists into a dictionary. 
+# Katelyn 
+# In order to convert our hashlist into a dictionary we can create two lists, one for keys and one for values.
+# We can then zip those lists together in order to get key value pairs and then convert those lists into a dictionary. 
