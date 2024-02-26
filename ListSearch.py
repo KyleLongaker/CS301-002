@@ -23,7 +23,7 @@ def search_sorted_list(sorted_list, item, start=0, end=None):
     else:
         return search_sorted_list(sorted_list, item, mid + 1, end)
 
-# Katelyn
+# Katelyn & Kyle
 class HashTable:
     def __init__(self, size=1000):
         self.size = size
