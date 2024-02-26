@@ -31,7 +31,7 @@ def search_sorted_list(sorted_list, item, start=0, end=None):
         return search_sorted_list(sorted_list, item, mid + 1, end)
     # Big O runtime: O(log n) due to the binary search algorithm's halving approach.
 
-# Katelyn
+# Katelyn & Kyle
 class HashTable:
     def __init__(self, size=1000):
         self.size = size
