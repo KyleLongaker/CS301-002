@@ -11,8 +11,9 @@ def insertion_sort(list_of_items):
             cur_pos = cur_pos - 1
         list_of_items[cur_pos] = cur_val
           
-# Big O runtime: O(n^2), worst case O(n^3) due to possible extra O(n) time it takes to look thoguh values. 
+#Big O runtime: O(n^2), worst case O(n^3) due to possible extra O(n) time it takes to look thoguh values. 
 
+##Test code:
 list_of_items = [4, 2, 3, 17, 7, 1, 34, 5, 20]
 bubble_sort(list_of_items)
 print(list_of_items)
@@ -26,8 +27,9 @@ def bubble_sort(list_of_items):
                 list_of_items[j], list_of_items[j+1] = list_of_items[j+1], list_of_items[j]
     return list_of_items
      
-# Big O runtime: O(n^2), worst case O(n^3) due to every comparison causing an exchange. 
+#Big O runtime: O(n^2), worst case O(n^3) due to every comparison causing an exchange. 
 
-list_of_items = [47, 12, 33, 17, 7, 51, 34, 5, 20]
+##Test code:
+list_of_items = [7, 32, 33, 17, 47]
 bubble_sort(list_of_items)
 print(list_of_items)
