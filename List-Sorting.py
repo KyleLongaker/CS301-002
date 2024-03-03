@@ -1,6 +1,6 @@
 #Group members: Katelyn Juhl, Kyle Longaker
 
-Katelyn:
+#Katelyn
 def insertion_sort(list_of_items):
      for i in range(1, len(list_of_items)):
         cur_val = list_of_items[i]
@@ -15,10 +15,10 @@ def insertion_sort(list_of_items):
 
 ##Test code:
 list_of_items = [4, 2, 3, 17, 7, 1, 34, 5, 20]
-bubble_sort(list_of_items)
-print(list_of_items)
+insertion_sort(list_of_items)
+print("After insertion sort:", list_of_items)
 
-Katelyn:
+#Katelyn
 def bubble_sort(list_of_items):
     n = len(list_of_items)
     for i in range(n):
@@ -26,8 +26,8 @@ def bubble_sort(list_of_items):
             if list_of_items[j] > list_of_items[j+1]:
                 list_of_items[j], list_of_items[j+1] = list_of_items[j+1], list_of_items[j]
     return list_of_items
-     
-#Big O runtime: O(n^2), worst case O(n^3) due to every comparison causing an exchange. 
+
+# Big O runtime: O(n^2), worst case O(n^3) due to every comparison causing an exchange. 
 
 ##Test code:
 list_of_items = [7, 32, 33, 17, 47]
