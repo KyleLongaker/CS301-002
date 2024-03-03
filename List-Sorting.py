@@ -1,4 +1,4 @@
-Group members: Katelyn Juhl, Kyle Longaker
+#Group members: Katelyn Juhl, Kyle Longaker
 
 Katelyn:
 def insertion_sort(list_of_items):
