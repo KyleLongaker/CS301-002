@@ -57,8 +57,14 @@ def selectionSort(list_of_items):
 # Example usage
 arr = [-2, 45, 0, 11, -9, 88, -97, -202, 747]
 selectionSort(arr)
-print('Sorted array by selection sort:', arr)
-
+arr_selection = [-2, 45, 0, 11, -9, 88, -97, -202, 747]
+print()
+print("Given array for selection sort is", arr)
+print(arr_selection)
+selectionSort(arr_selection)
+print("\nSorted array by selection sort is ")
+print(arr_selection)
+print()
 ###############################################
 #Kyle
 def mergeSort(arr):
@@ -108,8 +114,12 @@ def printList(arr):
 # Driver Code
 if __name__ == '__main__':
     arr = [12, 11, 13, 5, 6, 7]
-    print("Given array is")
-    printList(arr)
     mergeSort(arr)
-    print("\nSorted array is ")
-    printList(arr)
+   
+
+arr_merge = [12, 11, 13, 5, 6, 7]
+print("Given array for merge sort is")
+printList(arr_merge)
+mergeSort(arr_merge)
+print("\nSorted array by merge sort is ")
+printList(arr_merge)
