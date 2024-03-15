@@ -1,7 +1,7 @@
 ## Group Members: Katelyn Juhl, Kyle Longaker
 
 ## Katelyn Juhl 
-class BinaryTree:
+class DictionaryTree:
     def __init__(self, root_obj):
         self.key = root_obj
         self.left_child = None
