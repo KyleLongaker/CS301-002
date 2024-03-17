@@ -6,7 +6,8 @@ class DirectoryTree:
         self.key = root_obj
         
 ## Katelyn Juhl
-
+    def inseert_file(path):
+        
 
 
 
