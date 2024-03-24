@@ -1,5 +1,5 @@
 ## Group members : Katelyn Juhl & Kyle Longaker
-
+ 
 class BinaryTree:
    def __init__(self):
         self.root = None
