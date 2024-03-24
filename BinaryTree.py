@@ -124,6 +124,111 @@ Flatten Method:
 Note: The complexities assume that tree operations like insertions and traversals do not change the overall structure of the tree significantly enough to affect the average height of the tree.
 """
 
+################################################
+"""New code to look at"""
+
+## Group members : Katelyn Juhl & Kyle Longaker
+
+class Node:
+    """A Node in a Binary Search Tree."""
+    def __init__(self, key, payload=None):
+        self.key = key
+        self.payload = payload
+        self.left = None
+        self.right = None
+
+class BinaryTree:
+    """A Binary Search Tree implementation."""
+    def __init__(self):
+        self.root = None
+    
+    def insert(self, key, payload=None):
+        """Insert a new element into the BST."""
+        if self.root is None:
+            self.root = Node(key, payload)
+        else:
+            self._insert_rec(self.root, key, payload)
+    
+    def _insert_rec(self, node, key, payload):
+        """Recursive helper for the insert method."""
+        if key < node.key:
+            if node.left is None:
+                node.left = Node(key, payload)
+            else:
+                self._insert_rec(node.left, key, payload)
+        else:
+            if node.right is None:
+                node.right = Node(key, payload)
+            else:
+                self._insert_rec(node.right, key, payload)
+    
+    def inorder(self, node):
+        """Perform an in-order traversal."""
+        if node is None:
+            return ""
+        lres = self.inorder(node.left)
+        rres = self.inorder(node.right)
+        return lres + (str(node.key) + " " + (node.payload if node.payload else "") + "\n") + rres
+
+    def flatten(self):
+        """Flatten the BST to a linked list in-place."""
+        traversal = []
+        self._inorder_traversal(self.root, traversal)
+        
+        dummy = Node(-1)
+        prev = dummy
+        for val in traversal:
+            prev.right = Node(val[0], val[1])
+            prev = prev.right
+
+        return dummy.right
+
+    def _inorder_traversal(self, node, traversal):
+        """Helper for in-order traversal to support flatten."""
+        if node is not None:
+            self._inorder_traversal(node.left, traversal)
+            traversal.append((node.key, node.payload))
+            self._inorder_traversal(node.right, traversal)
+    
+    def print_flattened_tree(self, node):
+        """Print the nodes of a flattened tree."""
+        curr = node
+        while curr is not None:
+            print(f"{curr.key} {(curr.payload if curr.payload else '')}", end=" -> " if curr.right else "")
+            curr = curr.right
+        print()
+
+# Corrected Big O Runtime Complexity Analysis
+"""
+Insert Method:
+- Best and average case: O(log n) for a balanced tree.
+- Worst case: O(n) for a skewed tree (degenerates to a linked list).
+
+Search Method (Not provided but typically):
+- Best case: O(1) if the key is at the root.
+- Average case: O(log n) for a balanced tree.
+- Worst case: O(n) for a skewed tree.
+
+Inorder Traversal and Flatten Method:
+- Both operations are O(n), as they visit each node exactly once.
+"""
+
+if __name__ == "__main__":
+    bt = BinaryTree()
+    bt.insert(5, "Root")
+    bt.insert(3, "Left")
+    bt.insert(7, "Right")
+    bt.insert(2, "Left of Left")
+    bt.insert(4, "Right of Left")
+    bt.insert(6, "Left of Right")
+    bt.insert(8, "Right of Right")
+
+    print("In-order Traversal:")
+    print(bt.inorder(bt.root))
+
+    print("Flattened Tree:")
+    flattened_root = bt.flatten()
+    bt.print_flattened_tree(flattened_root)
 
 
 
