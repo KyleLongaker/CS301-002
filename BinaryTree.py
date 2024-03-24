@@ -143,14 +143,17 @@ class BinaryTree:
         self.root = None
     
     def insert(self, key, payload=None):
-        """Insert a new element into the BST."""
+        """
+        Insert a new element into the BST.
+        Average case: O(log n), where n is the number of nodes in the tree.
+        Worst case: O(n), this occurs when the tree becomes a linked list (degenerate tree).
+        """
         if self.root is None:
             self.root = Node(key, payload)
         else:
             self._insert_rec(self.root, key, payload)
     
     def _insert_rec(self, node, key, payload):
-        """Recursive helper for the insert method."""
         if key < node.key:
             if node.left is None:
                 node.left = Node(key, payload)
@@ -162,73 +165,65 @@ class BinaryTree:
             else:
                 self._insert_rec(node.right, key, payload)
     
-    def inorder(self, node):
-        """Perform an in-order traversal."""
-        if node is None:
-            return ""
-        lres = self.inorder(node.left)
-        rres = self.inorder(node.right)
-        return lres + (str(node.key) + " " + (node.payload if node.payload else "") + "\n") + rres
-
-    def flatten(self):
-        """Flatten the BST to a linked list in-place."""
-        traversal = []
-        self._inorder_traversal(self.root, traversal)
-        
-        dummy = Node(-1)
-        prev = dummy
-        for val in traversal:
-            prev.right = Node(val[0], val[1])
-            prev = prev.right
-
-        return dummy.right
-
-    def _inorder_traversal(self, node, traversal):
-        """Helper for in-order traversal to support flatten."""
-        if node is not None:
-            self._inorder_traversal(node.left, traversal)
-            traversal.append((node.key, node.payload))
-            self._inorder_traversal(node.right, traversal)
+    def search(self, key):
+        """
+        Search for a key in the BST.
+        Average case: O(log n), where n is the number of nodes in the tree.
+        Worst case: O(n), occurs when the tree is a degenerate tree (like a linked list).
+        """
+        return self._search_rec(self.root, key)
     
-    def print_flattened_tree(self, node):
-        """Print the nodes of a flattened tree."""
-        curr = node
-        while curr is not None:
-            print(f"{curr.key} {(curr.payload if curr.payload else '')}", end=" -> " if curr.right else "")
-            curr = curr.right
-        print()
-
-# Corrected Big O Runtime Complexity Analysis
-"""
-Insert Method:
-- Best and average case: O(log n) for a balanced tree.
-- Worst case: O(n) for a skewed tree (degenerates to a linked list).
-
-Search Method (Not provided but typically):
-- Best case: O(1) if the key is at the root.
-- Average case: O(log n) for a balanced tree.
-- Worst case: O(n) for a skewed tree.
-
-Inorder Traversal and Flatten Method:
-- Both operations are O(n), as they visit each node exactly once.
-"""
+    def _search_rec(self, node, key):
+        if node is None:
+            return False
+        if key == node.key:
+            return True
+        elif key < node.key:
+            return self._search_rec(node.left, key)
+        else:
+            return self._search_rec(node.right, key)
+    
+    def sortedlist(self):
+        """
+        Return the BST values in ascending order.
+        Runs in O(n) time for all cases as it must visit every node.
+        """
+        result = []
+        self._inorder_traversal(self.root, result)
+        return [item[0] for item in result]  # Adjusted to return keys only
+    
+    def reverseSortedList(self):
+        """
+        Return the BST values in descending order.
+        Runs in O(n) time for all cases as it must visit every node.
+        """
+        result = []
+        self._inorder_traversal(self.root, result)
+        return [item[0] for item in reversed(result)]  # Adjusted to return keys only and in reverse
+    
+    def _inorder_traversal(self, node, result):
+        if node:
+            self._inorder_traversal(node.left, result)
+            result.append((node.key, node.payload))
+            self._inorder_traversal(node.right, result)
 
 if __name__ == "__main__":
     bt = BinaryTree()
+    # Inserting nodes...
     bt.insert(5, "Root")
     bt.insert(3, "Left")
     bt.insert(7, "Right")
-    bt.insert(2, "Left of Left")
-    bt.insert(4, "Right of Left")
-    bt.insert(6, "Left of Right")
-    bt.insert(8, "Right of Right")
+    # Additional inserts...
 
-    print("In-order Traversal:")
-    print(bt.inorder(bt.root))
+    # Demonstrate sorted list functionality
+    print("Sorted List:", bt.sortedlist())
 
-    print("Flattened Tree:")
-    flattened_root = bt.flatten()
-    bt.print_flattened_tree(flattened_root)
+    # Demonstrate reverse sorted list functionality
+    print("Reverse Sorted List:", bt.reverseSortedList())
+
+    # Demonstrate the search functionality
+    print("Searching for 4:", bt.search(4))  # Expected: Result based on your insert operations
+
 
 
 
