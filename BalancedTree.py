@@ -139,6 +139,60 @@ print("After Deletion: ")
 myTree.printHelper(root, "", True) 
 
 
+###################################################################################################
+
+import heapq
+
+class PriorityQueue:
+    def __init__(self):
+        # Initializes an empty heap.
+        # The heap invariant is always satisfied.
+        self.heap = []
+        heapq.heapify(self.heap)  # Ensures the heap property; O(n) time, but for an empty heap, it's O(1).
+
+    def insert(self, item, key):
+        """
+        Inserts an item with its associated key into the priority queue.
+        After insertion, ensures that the internal binary heap satisfies the heap order property.
+        Average Case: O(log n), Worst Case: O(log n) -- where n is the number of items in the priority queue.
+        """
+        heapq.heappush(self.heap, (-key, item))  # Negate the key for max heap behavior.
+
+    def pop(self):
+        """
+        Returns a tuple (key, item) that is the item associated with the largest key in the queue.
+        After popping, the priority queue ensures that the internal binary heap maintains the heap order property.
+        If the queue is empty, returns None.
+        Average Case: O(log n), Worst Case: O(log n) -- where n is the number of items in the priority queue.
+        """
+        if not self.heap:
+            return None  # Handle empty heap case.
+        key, item = heapq.heappop(self.heap)
+        return (-key, item)  # Return the original key value.
+
+    def returnQueue(self):
+        """
+        Returns a list representation of the priority queue that is ordered by how the contents of the queue will be
+        returned by successive pop() operations.
+        This method does not affect the original queue.
+        Note: This operation involves creating a sorted copy of the heap, so it is more costly.
+        Average Case: O(n log n), Worst Case: O(n log n) -- where n is the number of items in the priority queue.
+        """
+        # Returns a sorted list of tuples with negated keys to reflect the true priority order.
+        return sorted(self.heap, key=lambda x: x[0], reverse=True)
+
+# Example usage
+if __name__ == "__main__":
+    pq = PriorityQueue()
+    pq.insert("Task 1", 3)
+    pq.insert("Task 2", 2)
+    pq.insert("Task 3", 1)
+    print("Queue after inserts:", pq.returnQueue())
+    print("Popping highest priority item:", pq.pop())
+    print("Queue after popping one item:", pq.returnQueue())
+
+
+
 
 
 
