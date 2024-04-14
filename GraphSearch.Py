@@ -25,7 +25,7 @@ class DFSGraph(Graph):
         self.time = self.time + 1
         start_vertex.closing_time = self.time
 
-
+## Big (O) Running time: O(n) Because of the amaount of time it takes for the program to ecacuate though all of the nested for loops. 
 
 
 
