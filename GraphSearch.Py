@@ -112,7 +112,7 @@ class Vertex:
     def __init__(self, label):
         self.label = label
         self.neighbors = set()  # Use a set to avoid duplicate edges
-        self.color = 'white'
+        self.color = 'white'  # All vertices start as unvisited ('white')
         self.previous = None
         self.discovery_time = 0
         self.closing_time = 0
@@ -157,6 +157,7 @@ class AdjacencyList:
             return True
         return False
 
+## Breadth-First Search (BFS) with O(V + E) complexity, where V is the number of vertices and E is the number of edges.
     def bfs(self, start_label, end_label):
         for vertex in self.vertices.values():
             vertex.color = 'white'
@@ -175,6 +176,7 @@ class AdjacencyList:
             vertex.color = 'black'
         return []
 
+## Depth-First Search (DFS) with O(V + E) complexity, where V is the number of vertices and E is the number of edges.
     def dfs(self, start_label):
         for vertex in self.vertices.values():
             vertex.color = 'white'
