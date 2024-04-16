@@ -21,7 +21,14 @@ def dijkstra(graph, start):
          neighbors = [n.label for n in self.vertices[vertex].neighbors]
          print(f"{vertex}: {neighbors}")
 
-
+# Example usage
+if __name__ == "__main__":
+   graph = AdjacencyList()
+   if graph.read_graph('graph.txt'):
+      print("Graph loaded successfully.")
+      graph.display_graph()
+   else:
+      print("Failed to load graph.")
 
 
 
