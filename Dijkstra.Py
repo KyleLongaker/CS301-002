@@ -63,6 +63,8 @@ class WeightedAdjacencyList:
             print(f"Error reading file: {e}")
             return False
 
+## Big O Running Time: O(log (n)) because of the while loop and how long it take to run the code. 
+
 def dijkstra(aGraph, start, target):
     print('''Dijkstra's shortest path''')
     # Set the distance for the start node to zero 
