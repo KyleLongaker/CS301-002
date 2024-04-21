@@ -1,7 +1,7 @@
 ## Group Memebers: Katelyn Juhl, Kyle Longaker 
 from pythonds3.graphs import PriorityQueue
 
-class Vertex:
+class Vertex: 
     def __init__(self, label):
         self.label = label
         self.neighbors = {}
