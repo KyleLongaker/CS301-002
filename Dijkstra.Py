@@ -77,23 +77,36 @@ class WeightedAdjacencyList:
          self.add_vertex(to)
       self.vert_dict[frm].add_neighbor(self.vert_dict[to], cost)
 
-   def read_graph(self, filepath):
-      # Read and build the graph from a file
-      # Assumes that each line of the file represents an edge
-      # File reading and graph construction generally O(E) where E is the number of edges
-      try:
-         with open(filepath, 'r') as file:
+def read_graph(self, filepath):
+# Read and build the graph from a file
+# Assumes that each line of the file represents an edge
+# File reading and graph construction generally O(E) where E is the number of edges
+    try:
+        with open(filepath, 'r') as file:
+            first_line = file.readline().strip()
+            num_vertices, num_edges = map(int, first_line.split())
+            vertices_line = file.readline().strip().split(',')
+            vertices = [vertex.strip() for vertex in vertices_line]
+            for vertex in vertices:
+                self.add_vertex(vertex)
+            actual_edge_count = 0
             for line in file:
-               parts = line.split()
-               if len(parts) != 3:
-                  continue  
-                   # Ignore lines that do not represent valid edges
-               frm, to, cost = parts
-               self.add_edge(frm, to, int(cost))
-         return True
-      except IOError as e:
-         print(f"Error reading file: {e}")
-         return False
+                parts = line.strip().split()
+                if len(parts) != 3:
+                    continue
+                frm, to, weight = parts
+                self.add_edge(frm, to, float(weight))
+                actual_edge_count += 1
+            if actual_edge_count != num_edges:
+                print(f"Warning: expected {num_edges} edges, but read {actual_edge_count}.")
+        return True
+    except IOError as e:
+        print(f"Error reading file: {e}")
+        return False
+    except ValueError as e:
+        print(f"Error processing file: {e}")
+        return False
+
 
 def dijkstra(aGraph, start, target):
    # Dijkstra's algorithm to find the shortest path from start to target
